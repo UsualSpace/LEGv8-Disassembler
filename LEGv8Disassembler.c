@@ -4,14 +4,14 @@
  * CS205 Sp '24 Wiese
  * Programmers: Abdurrahman Alyajouri, Jin P., Nelson Nguyen
  *
- * Test Cases 1:
+ * Test Case 1:
  *  10010001000000000001111111100100
  *  10010001000000000000100010000101
  *  10001011000001000000000010100110
  *  10010001000011111010001111100010
  *  11111111100000000000000001000110
  *
- * Test Cases 2:
+ * Test Case 2:
  *  10010001000100000000001111100010
  *  10010001000000000100011111100011
  *  11111000000000001000000001000011
@@ -19,7 +19,7 @@
  *  11111000010000000000000001000100
  *  10001011000000110000000010000100
  * 
- * Test Cases 3:
+ * Test Case 3:
  *  1001000100 000000000001 11111 00111
  *  1001000100 00000000101 11111 01000
  *  11001011000 01000 000000 00111 00111
@@ -181,7 +181,7 @@ int CheckEOF(FILE* ptr) {
     }
     ungetc(c, ptr);
     return 1;
-}
+} // END CheckEOF(FILE* ptr)
 
 int BinaryToDecimal(const char* bit_string) {
     int length = strlen(bit_string);
@@ -192,7 +192,7 @@ int BinaryToDecimal(const char* bit_string) {
         decimal_expansion += (int)(bit_string[i] - '0') * (1 << p); //digit * 2^x;
     }
     return decimal_expansion;
-} //END BinaryToDecimal(char* bit_string)
+} // END BinaryToDecimal(char* bit_string)
 
 void Read32BitLine(char target[], FILE* ptr, const int line_number) {
     int c; //Stores read file characters.
@@ -224,7 +224,7 @@ void Read32BitLine(char target[], FILE* ptr, const int line_number) {
         ++char_count; //Increment char counter to keep track of whether or not the instruction is 32-bit.
     }
     return;
-} //END Read32BitLine()
+} // END Read32BitLine()
 
 int DeduceOperationFromInstruction(char instruction[], const int line_number) {
     int found;
@@ -244,7 +244,7 @@ int DeduceOperationFromInstruction(char instruction[], const int line_number) {
     //At this point, opcode not found, so not a valid instruction in our context.
     printf("LINE %d - ERROR: Did not find valid operation code!", line_number);
     exit(0);
-} //END DeduceOperationFromInstruction
+} // END DeduceOperationFromInstruction
 
 //FUNCTIONS WRITTEN BY JIN
 void DecodeFormat_R(const char *instruction, int line_number, int op_idx) {
@@ -285,10 +285,8 @@ void DecodeFormat_R(const char *instruction, int line_number, int op_idx) {
 
     // Print decoded instruction
     printf("%s X%d, X%d, X%d\n", LEGV8_OPERATIONS[op_idx].assembly, rd_int, rn_int, rm_int);
-}
+} // END DecodeFormat_R(const char *instruction, int line_number, int op_idx)
 
-// Written by: Jin Pereyras
-// Decode and print I-format instructions
 void DecodeFormat_I(const char *instruction, int line_number, int op_idx) {
     int opcode_size = I_FORMAT_CHUNK_SIZES[0];
     int imm_size = I_FORMAT_CHUNK_SIZES[1];
@@ -323,10 +321,8 @@ void DecodeFormat_I(const char *instruction, int line_number, int op_idx) {
     
     // Print the decoded instruction
     printf("%s X%d, X%d, #%d\n", LEGV8_OPERATIONS[op_idx].assembly, rd_int, rn_int, imm_int);
-}
+} // END DecodeFormat_I(const char *instruction, int line_number, int op_idx)
 
-// Written by: Jin Pereyras
-// Decode and print D-format instructions
 void DecodeFormat_D(const char *instruction, int line_number, int op_idx) {
     int opcode_size = D_FORMAT_CHUNK_SIZES[0];
     int addr_size = D_FORMAT_CHUNK_SIZES[1];
@@ -365,4 +361,4 @@ void DecodeFormat_D(const char *instruction, int line_number, int op_idx) {
 
     // Print decoded instruction
     printf("%s X%d, [X%d, #%d]\n", LEGV8_OPERATIONS[op_idx].assembly, rt_int, rn_int, addr_int);
-}
+} // END DecodeFormat_D(const char *instruction, int line_number, int op_idx)
