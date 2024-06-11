@@ -1,2 +1,1 @@
-Decodes 32 bit lines of machine code into lines of assembly code according to the LEGv8 instruction set.
-I partnered with 2 other people in my systems programming and architecture class to program this as a final project.
+Decodes 32 bit lines of machine code into lines of assembly code according to the LEGv8 instruction set. I partnered with 2 other people in my systems programming and architecture class to program this as a final project. It only supports a few of the instructions from the LEGv8 instruction set at the moment.
